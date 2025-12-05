@@ -1,16 +1,13 @@
 {
-  "name": "@infra-blocks/lib-template",
+  "name": "@infra-blocks/error",
   "version": "0.0.0",
-  "description": "This repository is a template to generate repositories meant to hold the source code of NPM packages written in TypeScript.",
+  "description": "Error utilities.",
   "keywords": [
-    "template",
-    "typescript",
-    "esm",
-    "cjs"
+    "error"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/infra-blocks/ts-lib-template.git"
+    "url": "https://github.com/infra-blocks/ts-error.git"
   },
   "license": "ISC",
   "author": "",
