@@ -57,3 +57,40 @@ export function findCauseByType<C extends AbstractConstructor>(
 ): InstanceType<C> | undefined {
   return findCause(err, (e): e is InstanceType<C> => e instanceof ctor);
 }
+
+/**
+ * A convenience function for when extracting the cause is not required.
+ *
+ * It returns a boolean indicating whether the cause could be found
+ * using {@link findCause}.
+ *
+ * Equivalent to `findCause(err, predicate) != null`.
+ *
+ * @param err - The root error to examine.
+ * @param predicate - A predicate, to test each error against.
+ *
+ * @returns A boolean indicating whether a cause matching the predicate could be found.
+ */
+export function hasCause(err: unknown, predicate: Predicate<unknown>): boolean {
+  return findCause(err, predicate) != null;
+}
+
+/**
+ * A convenience function for when extracting the cause is not required.
+ *
+ * It returns a boolean indicating whether the cause could be found
+ * using {@link findCauseByType}.
+ *
+ * Equivalent to `findCauseByType(err, ctor) != null`.
+ *
+ * @param err - The root error to examine.
+ * @param ctor - The constructor function used in the `instanceof` check.
+ *
+ * @returns A boolean indicating whether a cause matching the constructor could be found.
+ */
+export function hasCauseByType<C extends AbstractConstructor>(
+  err: unknown,
+  ctor: C,
+): boolean {
+  return findCauseByType(err, ctor) != null;
+}
